@@ -27,6 +27,8 @@ static void mstatus_init()
   if (supports_extension('S'))
     write_csr(scounteren, -1);
   write_csr(mcounteren, -1);
+  write_csr(mhpmevent3, 0x102);
+  write_csr(mhpmevent4, 0x202);
 
   // Enable software interrupts
   write_csr(mie, MIP_MSIP);
