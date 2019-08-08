@@ -27,8 +27,12 @@ static void mstatus_init()
   if (supports_extension('S'))
     write_csr(scounteren, -1);
   write_csr(mcounteren, -1);
-  write_csr(mhpmevent3, 0x102);
-  write_csr(mhpmevent4, 0x202);
+  write_csr(mhpmevent3, 0x102); // I$ miss (Get)
+  write_csr(mhpmevent4, 0x202); // D$ miss (Acquire, Get, and Put)
+  write_csr(mhpmevent5, 0x402); // D$ channel C (Release, ReleaseData, ProbeAck, ProbeAckData)
+  write_csr(mhpmevent6, 0x4002); // D$ write miss
+  write_csr(mhpmevent7, 0x18002); // D$ writeback
+  write_csr(mhpmevent8, 0x10002); // D$ ProbeAckData
 
   // Enable software interrupts
   write_csr(mie, MIP_MSIP);
