@@ -32,7 +32,7 @@ static void mstatus_init()
   write_csr(mhpmevent5, 0x402); // D$ channel C (Release, ReleaseData, ProbeAck, ProbeAckData)
   write_csr(mhpmevent6, 0x4002); // D$ write miss
   write_csr(mhpmevent7, 0x18002); // D$ writeback
-  write_csr(mhpmevent8, 0x10002); // D$ ProbeAckData
+  write_csr(mhpmevent8, 0x60002); // blkdev Put and Get
 
   // Enable software interrupts
   write_csr(mie, MIP_MSIP);
